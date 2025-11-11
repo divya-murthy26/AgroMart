@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buyer Homepage - AgroCraft</title>
+    <title>Buyer Homepage - AgroMart</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Font Awesome -->
@@ -29,8 +29,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark portal-navbar">
         <div class="container">
             <a class="navbar-brand" href="bhome.php">
-                <img src="agro.png" alt="AgroCraft" style="height: 40px; border-radius: 50%;">
-                AgroCraft
+                <img src="agro.png" alt="AgroMart" style="height: 40px; border-radius: 50%;">
+                AgroMart
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -120,7 +120,7 @@
     <!-- Footer -->
     <footer class="portal-footer">
         <div class="container text-center">
-            <p class="mb-1">&copy; 2024 AgroCraft. All Rights Reserved.</p>
+            <p class="mb-1">&copy; 2024 AgroMart. All Rights Reserved.</p>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>

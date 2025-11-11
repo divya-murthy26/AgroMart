@@ -11,7 +11,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Buyer Login - AgroCraft</title>
+    <title>Buyer Login - AgroMart</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Font Awesome -->
@@ -30,7 +30,7 @@ session_start();
                         <div class="card-header">
                             <h3>Buyer Login</h3>
                             <div class="auth-logo">
-                                <a href="../index.html">AgroCraft</a>
+                                <a href="../index.html">AgroMart</a>
                             </div>
                         </div>
                         <div class="card-body">

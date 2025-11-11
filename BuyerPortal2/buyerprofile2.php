@@ -1,6 +1,13 @@
 <?php
     include("../Includes/db.php");
-    session_start();
+    include_once("../Functions/functions.php"); // Include functions for getUsername() and totalItems()
+
+    // Redirect if not logged in
+    if (!isset($_SESSION['phonenumber'])) {
+        header("Location: ../auth/BuyerLogin.php");
+        exit();
+    }
+
     $sessphonenumber = $_SESSION['phonenumber'];
     $sql="select * from buyerregistration where buyer_phone = '$sessphonenumber'";
     $run_query = mysqli_query($con,$sql);
@@ -9,11 +16,6 @@
         $name = $row['buyer_name'];
         $phone = $row['buyer_phone'];
         $address = $row['buyer_addr'];
-        $pan = $row['buyer_pan'];
-        $bank = $row['buyer_bank'];
-
-        $comp = $row['buyer_comp'];
-        $license = $row['buyer_license'];
         $mail = $row['buyer_mail'];
         $user = $row['buyer_username'];
     }   
@@ -24,28 +26,22 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buyer Profile</title>
-
+    <title>Buyer Profile - AgroMart</title>
+    <!-- Bootstrap CSS -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <a href="https://icons8.com/icon/83325/roman-soldier"></a>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <!-- Custom CSS -->
+    <link rel="stylesheet" href="../Styles/portal.css">
 
     <script src="https://kit.fontawesome.com/c587fc1763.js" crossorigin="anonymous"></script>
 </head>
 <style>
-    #staticEmail{
-        text-align:center;
-         border-style:solid;
-        border-color:black;
-        /* background-color:#ff5500;*/
-        width:30%;
-        font-size:20px;
-        color:black; 
-    } 
+   /* Custom styles for profile page if needed, otherwise portal.css handles most */
+    .profile-info-label {
+        min-width: 150px; /* Adjust as needed for alignment */
+        font-weight: bold;
+    }
     .text {
         background-color: black;
         color: gold;
@@ -400,44 +396,113 @@
     }
 </style>
 
-<body>
 
-
-
-
-
-    
-    <div class="container">
-    <div class="text-center">
-        <br>
-<br>
-        <b>
-            <h1 class="guard"><span><b>BUYER'S PROFILE</b></span>
-            </h1>
-        </b>
-        <br>
-    </div></div>
-
-    <div class="container" >
-        <div class="form">
-            <div class="input-group mt-4 s">
-                <div class="input-group-prepend ">
-                    <span class="input-group-text text  " id="inputGroup-sizing-default" ><i class="fas fa-user mr-2"></i>Full name</span>
-                </div>
-                <input type="text" readonly class="form-control-plaintext border border-dark" id="staticEmail" value="<?php echo $name?>">
+<!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark portal-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="bhome.php">
+                <img src="agro.png" alt="AgroMart" style="height: 40px; border-radius: 50%;">
+                AgroMart
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="bhome.php">
+                            <i class="fa fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="CartPage.php">
+                            <i class="fa fa-shopping-cart"></i> Cart
+                            <span class="badge badge-light"><?php echo totalItems(); ?></span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="far fa-user-circle"></i> <?php getUsername(); ?>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                            <?php
+                            if (isset($_SESSION['phonenumber'])) {
+                                echo '<a class="dropdown-item" href="buyerprofile2.php">Profile</a>';
+                                echo '<a class="dropdown-item" href="Transaction.php">Transactions</a>';
+                                echo '<a class="dropdown-item" href="../Includes/logout.php">Logout</a>';
+                            } else {
+                                echo '<a class="dropdown-item" href="../auth/BuyerLogin.php">Login</a>';
+                            }
+                            ?>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            <div class="input-group mt-4 s">
-                <div class="input-group-prepend ">
-                    <span class="input-group-text text  " id="inputGroup-sizing-default" ><i class="fas fa-phone-alt mr-2"></i>Phone No.</span>
-                </div>
-                <input type="phonenumber" readonly class="form-control-plaintext border border-dark" id="staticEmail" value="<?php echo $phone ?>">
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white text-center">
+                <h2><i class="fas fa-user-circle"></i> Buyer Profile</h2>
             </div>
-            <div class="input-group mt-4 s">
-                <div class="input-group-prepend ">
-                    <span class="input-group-text text  " id="inputGroup-sizing-default" ><i class="fas fa-home mr-2"></i>Address</span>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-4 text-md-right profile-info-label">Full Name:</div>
+                    <div class="col-md-8">
+                        <p class="form-control-plaintext"><?php echo htmlspecialchars($name); ?></p>
+                    </div>
                 </div>
-                <input type="text" readonly class="form-control-plaintext border border-dark" id="staticEmail" value="<?php echo $address ?>">
-            </div> 
-            <div class="input-group mt-4 s">
-                <div class="input-group-prepend ">
-                    <span class="input-group-text text  " id="inputGroup-sizing-default" ><i class="fa2 fa-clvs
+                <div class="row mb-3">
+                    <div class="col-md-4 text-md-right profile-info-label">Username:</div>
+                    <div class="col-md-8">
+                        <p class="form-control-plaintext"><?php echo htmlspecialchars($user); ?></p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4 text-md-right profile-info-label">Phone Number:</div>
+                    <div class="col-md-8">
+                        <p class="form-control-plaintext"><?php echo htmlspecialchars($phone); ?></p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4 text-md-right profile-info-label">Address:</div>
+                    <div class="col-md-8">
+                        <p class="form-control-plaintext"><?php echo htmlspecialchars($address); ?></p>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4 text-md-right profile-info-label">Email:</div>
+                    <div class="col-md-8">
+                        <p class="form-control-plaintext"><?php echo htmlspecialchars($mail); ?></p>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="BuyerEditProfile.php" class="btn btn-success btn-lg">
+                        <i class="fas fa-edit"></i> Edit Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="portal-footer">
+        <div class="container text-center">
+            <p class="mb-1">&copy; 2024 AgroMart. All Rights Reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

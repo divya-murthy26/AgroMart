@@ -21,8 +21,7 @@
                 echo "Hello, Buyer";
             }
         } else {
-            echo "<a href = '../auth/BuyerLogin.php'><div class='text-success logins mx-5'>Login</div></a>";
-            // echo "<label><a href = '../auth/BuyerLogin.php' style = 'color:white' >Login/Sign up</a></label>";
+            echo "Guest";
         }
     }
 
@@ -50,7 +49,7 @@
     function CheckoutIdentify()
     {
         if (isset($_SESSION['phonenumber'])) {
-            echo "<script>window.open('CartPage.php','_self')</script>";
+            echo "<script>window.open('checkout.php','_self')</script>";
         } else {
             echo "<script>window.open('../auth/BuyerLogin.php','_self')</script>";
         }
@@ -401,7 +400,7 @@
             $count_items =  mysqli_num_rows($run_items);
             return $count_items;
         } else {
-            echo 0;
+            return 0;
         }
     }
 
