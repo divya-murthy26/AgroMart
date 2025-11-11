@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@700&family=Roboto:wght@400;500;700&display=swap');
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f6f9;
+}
+main {
+    flex-grow: 1;
+}
+
+/* Navbar Styles */
+.portal-navbar {
+    background-color: #28a745; /* Same green as homepage */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-family: 'Roboto', sans-serif;
+}
+
+.portal-navbar .navbar-brand {
+    font-family: 'Cormorant Infant', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.portal-navbar .nav-link {
+    color: #e9f5e9;
+    font-weight: 500;
+    margin: 0 0.5rem;
+    transition: color 0.3s;
+}
+
+.portal-navbar .nav-link:hover,
+.portal-navbar .nav-item.active .nav-link {
+    color: #fff;
+}
+
+.portal-navbar .dropdown-menu {
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.portal-navbar .dropdown-item {
+    color: #333;
+}
+
+.portal-navbar .dropdown-item:hover {
+    background-color: #f4f4f4;
+}
+
+/* Carousel Styles */
+.carousel-img {
+    height: 70vh;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Features Section */
+.pictus {
+    padding: 60px 0;
+}
+
+.pictus .content_item {
+    margin-bottom: 40px;
+}
+
+.pictus img {
+    max-width: 150px;
+    margin-bottom: 1rem;
+}
+
+.pictus .imag1_under,
+.pictus .imag2_under,
+.pictus .imag3_under {
+    font-size: 1rem;
+    color: #555;
+    padding: 0 1rem;
+}
+
+/* General Cleanup */
+hr {
+    border-top: 1px solid #ddd;
+}
+
+/* Product Card Styles */
+.product-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(40,167,69,0.15);
+}
+
+.product-card-img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.product-card .card-body {
+    padding: 1.25rem;
+    text-align: center;
+}
+
+/* Footer Styles */
+.portal-footer {
+    background-color: #28a745; /* A dark, neutral color */
+    color: #ecf0f1;
+    padding: 30px 0;
+    margin-top: 40px;
+}
+
+.portal-footer .social-icons a {
+    color: #ecf0f1;
+    margin: 0 12px;
+    font-size: 1.4rem;
+    transition: color 0.3s;
+}
+
+.portal-footer .social-icons a:hover {
+    color: #28a745; /* Highlight with primary green */
+}

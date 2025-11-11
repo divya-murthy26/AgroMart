@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@700&family=Roboto:wght@400;500;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #e9f5e9; /* Light green background */
+}
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(../Images/Website/Farmer.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.auth-card {
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: none;
+    overflow: hidden;
+}
+
+.auth-card .card-header {
+    background-color: #28a745;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    border-bottom: none;
+    position: relative;
+}
+
+.auth-card .card-header h3 {
+    margin: 0;
+    font-family: 'Cormorant Infant', serif;
+    font-size: 2.2rem;
+}
+
+.auth-logo {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+}
+
+.auth-logo a {
+    font-family: 'Cormorant Infant', serif;
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.auth-logo a:hover {
+    opacity: 1;
+}
+
+.auth-card .card-body {
+    padding: 2rem 2.5rem;
+    background-color: #ffffff;
+}
+
+.form-control {
+    border-radius: 25px;
+    padding: 0.75rem 1.2rem;
+    height: calc(1.5em + 1.5rem + 2px); /* Explicitly set height to match padding */
+    border: 1px solid #ced4da;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.btn-block {
+    border-radius: 25px;
+    padding: 0.8rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
